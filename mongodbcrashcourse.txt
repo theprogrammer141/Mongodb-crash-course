@@ -1,0 +1,762 @@
+
+school> db.students.insertMany([{name: "Patrick",age:38, gpa:1.5}, {}, {}]) 
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('65cb308d681062225bc5c9a1'),
+    '1': ObjectId('65cb308d681062225bc5c9a2'),
+    '2': ObjectId('65cb308d681062225bc5c9a3')
+  }
+}
+school> db.students.insertMany([{name: "Patrick", age:38, gpa:1.5}, {name:"Sandy", age:27, gpa:4.0}, {name: "Gary", age:18, gpa:2.5}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('65cb3111681062225bc5c9a4'),
+    '1': ObjectId('65cb3111681062225bc5c9a5'),
+    '2': ObjectId('65cb3111681062225bc5c9a6')
+  }
+}
+school> db.students.find()
+
+school> db.students.insertOne({name:"Larry",
+...
+AbortController                   AbortSignal
+AggregateError                    Array
+ArrayBuffer                       Atomics
+BSONRegExp                        BSONSymbol
+BigInt                            BigInt64Array
+BigUint64Array                    BinData
+Binary                            Blob
+Boolean                           BroadcastChannel
+Buffer                            ByteLengthQueuingStrategy
+Code                              CompressionStream        
+CountQueuingStrategy              Crypto
+CryptoKey                         CustomEvent
+DBQuery                           DBRef
+DOMException                      DataView
+Date                              Decimal128
+DecompressionStream               Double
+EJSON                             Error
+EvalError                         Event
+EventTarget                       File
+FinalizationRegistry              Float32Array
+Float64Array                      FormData
+Function                          Headers
+HexData                           ISODate
+Infinity                          Int16Array
+Int32                             Int32Array
+Int8Array                         Intl
+JSON                              Long
+MD5                               Map
+Math                              MaxKey
+MessageChannel                    MessageEvent
+MessagePort                       MinKey
+Mongo                             MongoshAsyncWriterError  
+NaN                               Number
+NumberDecimal                     NumberInt
+NumberLong                        Object
+ObjectId                          Performance
+PerformanceEntry                  PerformanceMark
+PerformanceMeasure                PerformanceObserver
+PerformanceObserverEntryList      PerformanceResourceTiming
+Promise                           Proxy
+RangeError                        ReadableByteStreamController
+ReadableStream                    ReadableStreamBYOBReader
+ReadableStreamBYOBRequest         ReadableStreamDefaultController
+ReadableStreamDefaultReader       ReferenceError
+Reflect                           RegExp
+Request                           Response
+Set                               SharedArrayBuffer
+String                            SubtleCrypto
+Symbol                            SyntaxError
+TextDecoder                       TextDecoderStream
+TextEncoder                       TextEncoderStream
+Timestamp                         TransformStream
+TransformStreamDefaultController  TypeError
+TypedArray                        URIError
+URL                               URLSearchParams
+UUID                              Uint16Array
+Uint32Array                       Uint8Array
+Uint8ClampedArray                 WeakMap
+WeakRef                           WeakSet
+WebAssembly                       WritableStream
+WritableStreamDefaultController   WritableStreamDefaultWriter
+_                                 _arrayLikeToArray
+_arrayWithHoles                   _error
+_iterableToArrayLimit             _nonIterableRest
+_print                            _slicedToArray
+_unsupportedIterableToArray       _untrackedShow
+assert                            async_hooks
+atob                              bsonsize
+btoa                              buffer
+buildInfo                         child_process
+clearImmediate                    clearInterval
+clearTimeout                      cls
+cluster                           config
+connect                           console
+constants                         convertShardKeyToHashed
+crypto                            db
+decodeURI                         decodeURIComponent
+dgram                             diagnostics_channel
+disableTelemetry                  dns
+domain                            edit
+enableTelemetry                   encodeURI
+encodeURIComponent                escape
+eval                              events
+exit                              fetch
+fs                                global
+globalThis                        help
+http                              http2
+https                             inspector
+isFinite                          isInteractive
+isNaN                             it
+load                              module
+net                               origArraySort
+origFptS                          origTypedArraySort
+os                                parseFloat
+parseInt                          passwordPrompt
+path                              perf_hooks
+performance                       print
+printjson                         process
+punycode                          querystring
+queueMicrotask                    quit
+readline                          repl
+require                           rs
+setImmediate                      setInterval
+setTimeout                        sh
+show                              sleep
+snippet                           sp
+stream                            string_decoder
+
+school> db.students.find().sort({gpa:1})
+[
+  {
+    _id: ObjectId('65cb5019690ea0b9f79b2780'),
+    name: 'Spongebob',
+    age: 29,
+
+school> db.students.find().limit(1)
+[
+  {
+    _id: ObjectId('65cb5019690ea0b9f79b2780'),
+    name: 'Spongebob',
+    age: 29,
+    cgpa: 1.5
+  }
+]
+school> db.studnets.find().sort({gpa:1}).limit(1)
+
+school> db.students.find().sort({gpa:-1}).limit(1)
+[
+  {
+    _id: ObjectId('65cb520a681062225bc5c9a7'),
+    name: 'Larry',
+    age: 32,
+    gpa: 2.8,
+    fullTime: false,
+    registerDate: ISODate('2024-02-13T11:27:06.847Z'),
+    graduationDate: null,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ],
+    address: { street: '123 Fake St.', city: 'Downtown', zip: 12345 }       
+  }
+]
+school> db.students.find({name:"Spongebob"})
+[
+  {
+    _id: ObjectId('65cb5019690ea0b9f79b2780'),
+    name: 'Spongebob',
+    age: 29,
+    cgpa: 1.5
+  }
+]
+school> db.students.find({gpa:4.0})
+[  
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2784'),
+    name: 'Sandy',
+    age: 23,
+    gpa: 4
+  }
+]
+school> db.students.find({}, {name:true})
+[
+  { _id: ObjectId('65cb5019690ea0b9f79b2780'), name: 'Spongebob' },
+  { _id: ObjectId('65cb520a681062225bc5c9a7'), name: 'Larry' },
+  { _id: ObjectId('65cb5587690ea0b9f79b2782'), name: 'Garry' },
+  { _id: ObjectId('65cb5587690ea0b9f79b2783'), name: 'Patrick' },
+  { _id: ObjectId('65cb5587690ea0b9f79b2784'), name: 'Sandy' }
+]
+school> db.students.find({}, {_id:false, name:true})
+[
+  { name: 'Spongebob' },
+  { name: 'Larry' },
+  { name: 'Garry' },
+  { name: 'Patrick' },
+  { name: 'Sandy' }
+]
+school> db.students.find({}, {_id:false, name:true, gpa:true})
+[
+  { name: 'Spongebob' },
+  { name: 'Larry', gpa: 2.8 },
+  { name: 'Garry', gpa: 3.4 },
+  { name: 'Patrick', gpa: 2.8 },
+  { name: 'Sandy', gpa: 4 }
+]
+school> db.students.updateOne({name:"Spongebob"}, {$set:{fullTime:true}})   
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+school> db.students.find({name:"Spongebob"})
+[  
+  {
+    _id: ObjectId('65cb5019690ea0b9f79b2780'),
+    name: 'Spongebob',
+    age: 29,
+    cgpa: 1.5,
+    fullTime: true
+  }
+]
+school> db.studnets.updateOne({_id:"65cb5019690ea0b9f79b2780"}, {$set:{fullTime:false}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+school> db.students.find({_id:"65cb5019690ea0b9f79b2780"})
+
+school> db.students.updateOne({_id:ObjectId("65cb5019690ea0b9f79b2780")}, {$unset:{fullTime:""}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+school> db.students.find({_id:ObjectId("65cb5019690ea0b9f79b2780")})
+[
+  {
+    _id: ObjectId('65cb5019690ea0b9f79b2780'),
+    name: 'Spongebob',
+    age: 29,
+    cgpa: 1.5
+  }
+]
+school> db.students.updateMany({}, {$set:{fullTime:true}})
+{
+  acknowledged: true,
+  insertedId: null,  
+  matchedCount: 5,   
+  modifiedCount: 5,  
+  upsertedCount: 0   
+}
+school> db.students.find()
+[
+  {
+    _id: ObjectId('65cb5019690ea0b9f79b2780'),
+    name: 'Spongebob',
+    age: 29,
+    cgpa: 1.5,
+    fullTime: true
+  },
+  {
+    _id: ObjectId('65cb520a681062225bc5c9a7'),
+    name: 'Larry',
+    age: 32,
+    gpa: 2.8,
+    fullTime: true,
+    registerDate: ISODate('2024-02-13T11:27:06.847Z'),
+    graduationDate: null,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ],
+    address: { street: '123 Fake St.', city: 'Downtown', zip: 12345 }       
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2782'),
+    name: 'Garry',
+    age: 34,
+    gpa: 3.4,
+    fullTime: true
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2783'),
+    name: 'Patrick',
+    age: 43,
+    gpa: 2.8,
+    fullTime: true
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2784'),
+    name: 'Sandy',
+    age: 23,
+    gpa: 4,
+    fullTime: true
+  }
+]
+school> db.students.updateOne({name:"Garry"}, {$unset:{fullTime:""}})       
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+school> db.students.updateOne({name:"Sandy"}, {$unset:{fullTime:""}})       
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+school> db.students.find()
+[  
+  {
+    _id: ObjectId('65cb5019690ea0b9f79b2780'),
+    name: 'Spongebob',
+    age: 29,
+    cgpa: 1.5,
+    fullTime: true
+  },
+  {
+    _id: ObjectId('65cb520a681062225bc5c9a7'),
+    name: 'Larry',
+    age: 32,
+    gpa: 2.8,
+    fullTime: true,
+    registerDate: ISODate('2024-02-13T11:27:06.847Z'),
+    graduationDate: null,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ],
+    address: { street: '123 Fake St.', city: 'Downtown', zip: 12345 }       
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2782'),
+    name: 'Garry',
+    age: 34,
+    gpa: 3.4
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2783'),
+    name: 'Patrick',
+    age: 43,
+    gpa: 2.8,
+    fullTime: true
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2784'),
+    name: 'Sandy',
+    age: 23,
+    gpa: 4
+  }
+]
+school> db.students.findMany({fullTime:{$exists:false}}, {$set:{fullTime:true}})
+TypeError: db.students.findMany is not a function
+school> db.students.updateMany({fullTime:{$exists:false}}, {$set:{fullTime:true}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+school> db.students.find()
+[  
+  {
+    _id: ObjectId('65cb5019690ea0b9f79b2780'),
+    name: 'Spongebob',
+    age: 29,
+    cgpa: 1.5,
+    fullTime: true
+
+school> db.students.deleteOne({name:"Larry"})
+{ acknowledged: true, deletedCount: 1 }
+school> db.students.find()
+[
+  {
+    _id: ObjectId('65cb5019690ea0b9f79b2780'),
+    name: 'Spongebob',
+    age: 29,
+    cgpa: 1.5,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2782'),
+    name: 'Garry',
+    age: 34,
+    gpa: 3.4,
+    fullTime: true
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2783'),
+    name: 'Patrick',
+    age: 43,
+    gpa: 2.8,
+    fullTime: true
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2784'),
+    name: 'Sandy',
+    age: 23,
+
+school> db.students.find({name:{$ne:"Spongebob"}})
+[
+  {
+    _id: ObjectId('65cb520a681062225bc5c9a7'),
+    name: 'Larry',
+    age: 32,
+    gpa: 2.8,
+    fullTime: true,
+    registerDate: ISODate('2024-02-13T11:27:06.847Z'),
+    graduationDate: null,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ],
+    address: { street: '123 Fake St.', city: 'Downtown', zip: 12345 }
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2782'),
+    name: 'Garry',
+    age: 34,
+    gpa: 3.4,
+    fullTime: true
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2783'),
+    name: 'Patrick',
+    age: 43,
+    gpa: 2.8,
+    fullTime: true
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2784'),
+    name: 'Sandy',
+    age: 23,
+    gpa: 4,
+    fullTime: true
+  }
+]
+school> db.students.find({age:{$lt:20}})
+
+school> db.students.find({age:{$lte:27}})
+[
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2784'),
+    name: 'Sandy',
+    age: 23,
+    gpa: 4,
+    fullTime: true
+  }
+]
+school> db.students.find({age:{$gt:27}})
+[  
+  {
+    _id: ObjectId('65cb5019690ea0b9f79b2780'),
+    name: 'Spongebob',
+    age: 29,
+    cgpa: 1.5,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('65cb520a681062225bc5c9a7'),
+    name: 'Larry',
+    age: 32,
+    gpa: 2.8,
+    fullTime: true,
+    registerDate: ISODate('2024-02-13T11:27:06.847Z'),
+    graduationDate: null,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ],
+    address: { street: '123 Fake St.', city: 'Downtown', zip: 12345 }
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2782'),
+    name: 'Garry',
+    age: 34,
+    gpa: 3.4,
+    fullTime: true
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2783'),
+    name: 'Patrick',
+    age: 43,
+    gpa: 2.8,
+    fullTime: true
+  }
+]
+school> db.students.find({age:{$gte:27}})
+[  
+  {
+    _id: ObjectId('65cb5019690ea0b9f79b2780'),
+    name: 'Spongebob',
+    age: 29,
+    cgpa: 1.5,
+    fullTime: false
+  },
+  {
+    _id: ObjectId('65cb520a681062225bc5c9a7'),
+    name: 'Larry',
+    age: 32,
+    gpa: 2.8,
+    fullTime: true,
+    registerDate: ISODate('2024-02-13T11:27:06.847Z'),
+    graduationDate: null,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ],
+    address: { street: '123 Fake St.', city: 'Downtown', zip: 12345 }
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2782'),
+    name: 'Garry',
+    age: 34,
+    gpa: 3.4,
+    fullTime: true
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2783'),
+    name: 'Patrick',
+    age: 43,
+    gpa: 2.8,
+    fullTime: true
+  }
+]
+school> db.students.find({gpa:{$gte:3, $lte:4}})
+[  
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2782'),
+    name: 'Garry',
+    age: 34,
+    gpa: 3.4,
+
+school> db.students.find({name:{$nin:["Spongebob","Patrick", "Sandy"]}})        
+[
+  {
+    _id: ObjectId('65cb520a681062225bc5c9a7'),
+    name: 'Larry',
+    age: 32,
+    gpa: 2.8,
+    fullTime: true,
+    registerDate: ISODate('2024-02-13T11:27:06.847Z'),
+    graduationDate: null,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ],
+    address: { street: '123 Fake St.', city: 'Downtown', zip: 12345 }
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2782'),
+    name: 'Garry',
+    age: 34,
+    gpa: 3.4,
+    fullTime: true
+  }
+]
+school> db.students.find({$and: [{fullTime:true}, {age:{$lte:22}}]})
+
+school> db.students.find({$or: [{fullTime:true}, {age:{$lte:22}}]})
+[
+  {
+    _id: ObjectId('65cb520a681062225bc5c9a7'),
+    name: 'Larry',
+    age: 32,
+    gpa: 2.8,
+    fullTime: true,
+    registerDate: ISODate('2024-02-13T11:27:06.847Z'),
+    graduationDate: null,
+    courses: [ 'Biology', 'Chemistry', 'Calculus' ],
+    address: { street: '123 Fake St.', city: 'Downtown', zip: 12345 }
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2782'),
+    name: 'Garry',
+    age: 34,
+    gpa: 3.4,
+    fullTime: true
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2783'),
+    name: 'Patrick',
+    age: 43,
+    gpa: 2.8,
+    fullTime: true
+  },
+  {
+    _id: ObjectId('65cb5587690ea0b9f79b2784'),
+    name: 'Sandy',
+    age: 23,
+    gpa: 4,
+    fullTime: true
+  }
+]
+school> db.students.find({$nor: [{fullTime:true}, {age:{$lte:22}}]})
+[  
+  {
+    _id: ObjectId('65cb5019690ea0b9f79b2780'),
+    name: 'Spongebob',
+    age: 29,
+    cgpa: 1.5,
+    fullTime: false
+  }
+]
+school> db.students.find({name:"Larry"}).explain("executionStats")
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'school.students',
+    indexFilterSet: false,
+    parsedQuery: { name: { '$eq': 'Larry' } },
+    queryHash: 'A2F868FD',
+    planCacheKey: 'A2F868FD',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      stage: 'COLLSCAN',
+      filter: { name: { '$eq': 'Larry' } },
+      direction: 'forward'
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 1,
+    executionTimeMillis: 0,
+    totalKeysExamined: 0,
+    totalDocsExamined: 5,
+    executionStages: {
+      stage: 'COLLSCAN',
+      filter: { name: { '$eq': 'Larry' } },
+      nReturned: 1,
+      executionTimeMillisEstimate: 0,
+      works: 6,
+      advanced: 1,
+      needTime: 4,
+      needYield: 0,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      direction: 'forward',
+      docsExamined: 5
+    }
+  },
+  command: { find: 'students', filter: { name: 'Larry' }, '$db': 'school' },    
+  serverInfo: {
+    host: 'DESKTOP-GLLFAFL',
+    port: 27017,
+    version: '7.0.5',
+    gitVersion: '7809d71e84e314b497f282ea8aa06d7ded3eb205'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeRestricted'
+  },
+  ok: 1
+}
+school> db.students.createIndex({name:1})
+name_1
+school> db.students.find({name:"Larry"}).explain("executionStats")
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'school.students',
+    indexFilterSet: false,
+    parsedQuery: { name: { '$eq': 'Larry' } },
+    queryHash: 'A2F868FD',
+    planCacheKey: 'A3E454E0',
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      stage: 'FETCH',
+      inputStage: {
+        stage: 'IXSCAN',
+        keyPattern: { name: 1 },
+        indexName: 'name_1',
+        isMultiKey: false,
+        multiKeyPaths: { name: [] },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: { name: [ '["Larry", "Larry"]' ] }
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 1,
+    executionTimeMillis: 40,
+    totalKeysExamined: 1,
+    totalDocsExamined: 1,
+    executionStages: {
+      stage: 'FETCH',
+      nReturned: 1,
+      executionTimeMillisEstimate: 23,
+      works: 2,
+      advanced: 1,
+      needTime: 0,
+      needYield: 0,
+      saveState: 2,
+      restoreState: 2,
+      isEOF: 1,
+      docsExamined: 1,
+      alreadyHasObj: 0,
+      inputStage: {
+        stage: 'IXSCAN',
+        nReturned: 1,
+        executionTimeMillisEstimate: 23,
+        works: 2,
+        advanced: 1,
+        needTime: 0,
+        needYield: 0,
+        saveState: 2,
+        restoreState: 2,
+        isEOF: 1,
+        keyPattern: { name: 1 },
+        indexName: 'name_1',
+        isMultiKey: false,
+        multiKeyPaths: { name: [] },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: { name: [ '["Larry", "Larry"]' ] },
+        keysExamined: 1,
+        seeks: 1,
+
+school> show collections
+students
+school> db.createCollection("teachers", {capped:true, size:10000000, max:100}, {autoIndexId:false})
+{ ok: 1 }
+school> show colletions
+MongoshInvalidInputError: [COMMON-10001] 'colletions' is not a valid argument for "show".
+school> show collections
+students
+teachers
+school> db.create
+school.create
+school> db.drop("school.create")
+TypeError: db.drop is not a function
+school> db.createCollections("courses")
+TypeError: db.createCollections is not a function
+school> db.createCollection("courses")
+{ ok: 1 }
+school> show Collections
+MongoshInvalidInputError: [COMMON-10001] 'Collections' is not a valid argument for "show".
+school> show collections
+courses
+students
+teachers
+school> db.courses.drop()
+true
+school> show collections
+students
+teachers
