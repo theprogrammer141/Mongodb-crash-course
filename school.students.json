@@ -1,0 +1,59 @@
+[{
+  "_id": {
+    "$oid": "65cb5019690ea0b9f79b2780"
+  },
+  "name": "Spongebob",
+  "age": 29,
+  "cgpa": 1.5,
+  "fullTime": false
+},
+{
+  "_id": {
+    "$oid": "65cb520a681062225bc5c9a7"
+  },
+  "name": "Larry",
+  "age": 32,
+  "gpa": 2.8,
+  "fullTime": true,
+  "registerDate": {
+    "$date": "2024-02-13T11:27:06.847Z"
+  },
+  "graduationDate": null,
+  "courses": [
+    "Biology",
+    "Chemistry",
+    "Calculus"
+  ],
+  "address": {
+    "street": "123 Fake St.",
+    "city": "Downtown",
+    "zip": 12345
+  }
+},
+{
+  "_id": {
+    "$oid": "65cb5587690ea0b9f79b2782"
+  },
+  "name": "Garry",
+  "age": 34,
+  "gpa": 3.4,
+  "fullTime": true
+},
+{
+  "_id": {
+    "$oid": "65cb5587690ea0b9f79b2783"
+  },
+  "name": "Patrick",
+  "age": 43,
+  "gpa": 2.8,
+  "fullTime": true
+},
+{
+  "_id": {
+    "$oid": "65cb5587690ea0b9f79b2784"
+  },
+  "name": "Sandy",
+  "age": 23,
+  "gpa": 4,
+  "fullTime": true
+}]
